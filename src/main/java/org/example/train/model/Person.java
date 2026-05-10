@@ -1,0 +1,32 @@
+package org.example.train.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import org.example.train.model.enums.Role;
+
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+@Data
+@Table(name = "person")
+public class Person {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
+
+}
